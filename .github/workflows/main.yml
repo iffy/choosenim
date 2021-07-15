@@ -1,0 +1,32 @@
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: iffy/install-nim@v3.2.0
+        with:
+          version: 1.4.0
+      - run: nim -v
+      - run: nimble -v
+      - run: nimble build
+      - name: Upload choosenim
+        uses: actions/upload-artifact@v2
+        with:
+          name: choosenim
+          path: /c/Users/runneradmin/.nimble/bin/choosenim
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download prebuilt choosenim
+        uses: actions/download-artifact@v2
+        with:
+          name: choosenim
+      - run: /c/Users/runneradmin/.nimble/bin/choosenim 1.4.0
+      - run: nim -v
+      - run: nimble -v
+
