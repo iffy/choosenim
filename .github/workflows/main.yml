@@ -12,7 +12,7 @@ jobs:
           version: 1.4.0
       - run: nim -v
       - run: nimble -v
-      - run: nimble build
+      - run: nimble build -y
       - name: Upload choosenim
         uses: actions/upload-artifact@v2
         with:
