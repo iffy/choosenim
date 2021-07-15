@@ -17,7 +17,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: choosenim
-          path: /c/Users/runneradmin/.nimble/bin/choosenim
+          path: bin/choosenim
   test:
     runs-on: windows-latest
     needs: build
@@ -27,7 +27,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: choosenim
-      - run: /c/Users/runneradmin/.nimble/bin/choosenim 1.4.0
+      - run: bin/choosenim 1.4.0
       - run: nim -v
       - run: nimble -v
 
