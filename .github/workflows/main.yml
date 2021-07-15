@@ -20,6 +20,7 @@ jobs:
           path: /c/Users/runneradmin/.nimble/bin/choosenim
   test:
     runs-on: windows-latest
+    needs: build
     steps:
       - uses: actions/checkout@v1
       - name: Download prebuilt choosenim
